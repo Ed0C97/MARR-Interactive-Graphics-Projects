@@ -1,180 +1,202 @@
-# Interactive Graphics Projects
+# 🚀 Interactive Graphics Projects
 
-Welcome to the comprehensive documentation for the **Interactive Graphics** projects of the *Robotics and Artificial Intelligence Master's Degree* at **La Sapienza of Rome**. This guide covers multiple projects, each designed to explore fundamental and advanced concepts in graphics programming, from alpha compositing and transformations to advanced rendering techniques and physically-based simulations.
+Welcome to the comprehensive documentation for the **Interactive Graphics** projects of the *Robotics and Artificial Intelligence Master's Degree* at **La Sapienza, Rome**. 🎓  
 
----
-
-## Table of Contents
-
-- [Project 1: Alpha Compositing](#project-1-alpha-compositing)
-- [Project 2: UAV Transformations](#project-2-uav-transformations)
-- [Project 3: 3D Mesh Rendering with WebGL](#project-3-3d-mesh-rendering-with-webgl)
-- [Project 4: Shading and Lighting](#project-4-shading-and-lighting)
-- [Project 5: GPU-Based Ray Tracing](#project-5-gpu-based-ray-tracing)
-- [Project 6: Physically-Based Mass-Spring Simulation](#project-6-mass-spring-simulation)
-- [Getting Started](#getting-started)
-- [Credits](#credits)
-- [License](#license)
+This guide covers multiple projects, each designed to explore fundamental and advanced concepts in graphics programming—from alpha compositing and transformations to advanced rendering techniques and physically-based simulations.
 
 ---
 
-## Project 1: Alpha Compositing
+## 📚 Table of Contents
 
-Implement a JavaScript function to composite a foreground image onto a background image using alpha blending.
+- 🖼️ [Project 1: Alpha Compositing](#-project-1-alpha-compositing)
+- 🚁 [Project 2: UAV Transformations](#project-2-uav-transformations)
+- 📐 [Project 3: Triangular Meshes](#project-3-triangular-meshes)
+- 🎨 [Project 4: Shading](#project-4-shading)
+- 🌈 [Project 5: Ray Tracing](#project-5-ray-tracing)
+- 🎳 [Project 6: Mass-Spring Simulation](#project-6-mass-spring-simulation)
+- 🚦 [Getting Started](#getting-started)
+- 📌 [Credits](#credits)
+- 📝 [License](#license)
 
-### Key Features:
-- Alpha blending using foreground opacity
-- Handling images with variable dimensions and positions (including negative coordinates)
-- Ignoring portions outside the background boundaries
+---
 
-**Function:**
+## 🖼️ Project 1: Alpha Compositing
+
+In this project we will implement an alpha compositing function for raster images using JavaScript.
+
+You're given an HTML file that implements a simple web-based image compositing application. Video demonstration:
+
+▶️ [Watch Video](https://youtu.be/QpwfzYpseeo)
+
+You'll implement the JavaScript function:
+
 ```javascript
 function composite(bgImg, fgImg, fgOpac, fgPos)
 ```
 
-**Files Provided:**
-- `project1.html`, `project1.js`
-- **Test Images:** `background.png`, `teapot.png`, `u.png`, `star.png`
+- **bgImg:** background image to modify.
+- **fgImg:** foreground image to composite onto background.
+- **fgOpac:** opacity of foreground image.
+- **fgPos:** position `{x, y}` of the foreground image; can be negative.
 
-[**Demo Video**](https://www.youtube.com/watch?v=QpwfzYpseeo)
+The function modifies the background image directly and ignores out-of-bound portions.
 
----
+### 📂 Files Provided:
 
-## Project 2: UAV Transformations
+- **`project1.html`**  
+- **`project1.js`** *(placeholder)*
+- Images: `background.png`, `teapot.png`, `u.png`, `star.png`
 
-Implement transformation matrices to animate a UAV with correctly positioned propellers.
-
-### Required Functions:
-- `GetTransform(translation, rotation, scale)`
-- `ApplyTransform(transformA, transformB)`
-
-**Files Provided:**
-- `project2.html`, `project2.js`
-- **UAV Assets:** `uav.png`, `propeller.png`, `shadow.png`, `ground.jpg`
-
-[**Demo**](https://graphics.cs.utah.edu/courses/cs4600/fall2023/?prj=2)
+💡 **Tip**: Press **F4** to reload your script without refreshing the entire page.
 
 ---
 
-## Project 3: 3D Mesh Rendering with WebGL
+## 🚁 Project 2: UAV Transformations
 
-Render a textured 3D triangular mesh using WebGL.
+Implement UAV transformations using JavaScript.
 
-### Features:
-- Model transformations (translation, rotation, perspective projection)
-- Mesh rendering (`MeshDrawer` class)
-- Texture mapping
-
-**Key Function:**
+**Functions to implement:**
 ```javascript
-function GetModelViewProjection(projectionMatrix, translationX, translationY, translationZ, rotationX, rotationY)
+function GetTransform(positionX, positionY, rotation, scale)
+function ApplyTransform(trans1, trans2)
 ```
 
-**Files Provided:**
-- `project4.html`, `project4.js`, `obj.js`
-- **OBJ & Textures:** `teapot.obj`, `bricks.png`, `nyra.obj`, `nyra.png`
+Transformations apply in order: scale → rotation → translation.
 
-[**Demo**](https://graphics.cs.utah.edu/courses/cs4600/fall2023/?prj=4)
+### 📂 Files Provided:
 
----
+- **`project2.html`**  
+- **`project2.js`** *(placeholder)*
+- Images: `uav.png`, `propeller.png`, `shadow.png`, `ground.jpg` *(image by Giles Hodges)*
 
-## Project 4: Shading and Lighting
+💡 **Tips**:
+- Press **F4** for quick reloads.
+- Debug using Visual Studio Code.
 
-Enhance rendering using advanced shading techniques with the **Blinn-Phong** model.
-
-### Additional Features:
-- Vertex normals
-- Directional lighting
-- Shininess control
-
-### Key Functions:
-```javascript
-setMesh(vertPos, texCoords, normals)
-setLightDir(x, y, z)
-setShininess(shininess)
-
-function GetModelViewMatrix(translationX, translationY, translationZ, rotationX, rotationY)
-```
-
-**Files Provided:**
-- `project5.html`, `project5.js`, `obj.js`
-- **Models:** `teapot.obj`, `nyra.obj`
-
-[**Demo**](https://graphics.cs.utah.edu/courses/cs4600/fall2023/?prj=5)
+▶️ [Demo](https://graphics.cs.utah.edu/courses/cs4600/fall2023/?prj=2)
 
 ---
 
-## Project 5: GPU-Based Ray Tracing
+## 📐 Project 3: Triangular Meshes
 
-Implement GPU-based ray tracing using GLSL shaders to render scenes with spheres and lights.
+Implement transformations and textured mesh rendering with WebGL.
 
-### Rendering Modes:
-- Rasterization (provided)
-- Pure Ray Tracing
-- Hybrid (Rasterization + Ray Tracing for reflections/shadows)
+### Steps:
+1. `GetModelViewProjection(projectionMatrix, translationX, translationY, translationZ, rotationX, rotationY)`
+2. Render mesh (`MeshDrawer` class)
+3. Display texture on mesh.
+
+### 📂 Files Provided:
+
+- **`project4.html`**, **`project4.js`**, **`obj.js`**
+- OBJ and textures: `teapot.obj`, `bricks.png`, `nyra.obj`, `nyra.png`
+
+🎬 [Demo & Instructions](https://graphics.cs.utah.edu/courses/cs4600/fall2023/?prj=4)
+
+---
+
+## 🎨 Project 4: Shading
+
+Enhance your previous mesh renderer with shading (Blinn material model).
+
+### Additional methods:
+- `setMesh(vertPos, texCoords, normals)`
+- `draw(matrixMVP, matrixMV, matrixNormal)`
+- `setLightDir(x, y, z)`
+- `setShininess(shininess)`
+- `GetModelViewMatrix(translationX, translationY, translationZ, rotationX, rotationY)`
+
+### 📂 Files Provided:
+
+- **`project5.html`**, **`project5.js`**, **`obj.js`**
+
+💡 **Shading**:
+- Directional white light `(1,1,1)`
+- Optional ambient lighting
+- Adjustable shininess
+- Texture replaces diffuse color (`Kd`) if enabled
+
+📹 [Demo](https://graphics.cs.utah.edu/courses/cs4600/fall2023/?prj=5)
+
+---
+
+## 🌈 Project 5: Ray Tracing
+
+Implement GPU-based ray tracing (GLSL shaders) to render realistic scenes of spheres and point lights.
 
 ### GLSL Functions:
 - `RayTracer`
 - `IntersectRay`
 - `Shade`
 
-**Files Provided:**
-- `project6.html`, `project6.js`
+**Rendering Modes**:
+- Rasterization (provided)
+- Ray Tracing *(your implementation)*
+- Hybrid (Rasterization + Ray Tracing reflections & shadows)
 
-[**Ray Tracing Demo**](https://graphics.cs.utah.edu/courses/cs4600/fall2023/?prj=6)
+### 📂 Files Provided:
+
+- **`project6.html`**, **`project6.js`** *(GLSL placeholders)*
+
+💡 **Tip**: Press **F4** to reload GLSL code quickly.
+
+📹 [Demo](https://graphics.cs.utah.edu/courses/cs4600/fall2023/?prj=6)
 
 ---
 
-## Project 6: Mass-Spring Simulation
+## 🌈 Project 5: Ray Tracing *(described above)*
 
-Implement a physically-based simulation of a mass-spring system, including collision detection and numerical integration.
+---
 
-### Core Function:
+## 🎳 Project 6: Mass-Spring Simulation
+
+Physically-based simulation using mass-spring systems.
+
+Implement numerical integration (`Euler explicit/semi-implicit`) and collisions in a bounding cube from `-1` to `1`.
+
 ```javascript
 function SimTimeStep(dt, positions, velocities, springs, stiffness, damping, particleMass, gravity, restitution)
 ```
 
-### Features:
-- Numerical integration (Euler explicit/semi-implicit)
-- Collision detection within a bounding box
-- Interaction and visualization with WebGL
+### 📂 Files Provided:
 
-**Files Provided:**
-- `project7.html`, `project7.js`, `obj.js`
-- `teapot-low.obj`
+- **`project7.html`**, **`project7.js`** *(placeholders provided)*
+- **`obj.js`** *(updated)*
+- Model: `teapot-low.obj`
 
-[**Simulation Demo**](https://www.youtube.com/watch?v=Kpep7eWHQBM)
+Class provided: **`Vec3`**  
+*(with standard vector algebra methods: `add`, `sub`, `dot`, `cross`, `scale`, etc.)*
 
----
-
-## Getting Started
-
-### Cloning Repository:
-```bash
-git clone <repository-url>
-cd interactive-graphics-projects
-```
-
-### Running Projects:
-- Open `.html` files directly in your browser.
-- Edit `.js` files to experiment with parameters.
-- Press **F4** for fast JavaScript reload and debugging.
-
-### Recommended Tools:
-- [Visual Studio Code](https://code.visualstudio.com/)
-- Modern browsers (**Chrome recommended**)
+📹 [Demo](https://www.youtube.com/watch?time_continue=187&v=Kpep7eWHQBM)
 
 ---
 
-## Credits
+## 🚦 Getting Started
 
-- **Sapienza University of Rome**, Robotics and Artificial Intelligence Master's Course
-- Inspired by **University of Utah** Graphics Course
-- Special thanks to original creators for demonstrations and initial resources.
+Clone the repository and place all files in the same directory.
+
+### Quick testing:
+- Open HTML files directly in your browser.
+- Press **F4** to reload JS scripts quickly.
+
+### Recommended tools:
+- 🖥️ [Visual Studio Code](https://code.visualstudio.com/)
+- Modern browser (Chrome recommended)
 
 ---
 
-## License
+## 📌 Credits
 
-Distributed under the **MIT License**. See [LICENSE](LICENSE) for more details.
+- **Sapienza University of Rome** – Robotics and Artificial Intelligence Master's Degree
+- Inspired by University of Utah graphics projects
+- Special thanks to the original creators
 
+---
+
+## 📝 License
+
+Distributed under the **MIT License**. See `LICENSE` for details.
+
+---
+
+🌟 **Happy coding and exploring!**
