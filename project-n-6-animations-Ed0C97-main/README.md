@@ -1,45 +1,69 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/LZ949EU_)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=15072246&assignment_repo_type=AssignmentRepo)
-In this project, we will implement a physically-based simulation using a mass-spring system.
+# 🎳 Project 6: Physically-Based Mass-Spring Simulation
 
-As in the previous projects, you are given an HTML file that implements the user interface and a part of the JavaScript and WebGL code. The part you will implement as a part of this project is the simulation time stepping function below:
+In this project, we will implement a physically-based simulation using a **mass-spring system**.
 
-function SimTimeStep( dt, positions, velocities, springs, stiffness, damping, particleMass, gravity, restitution )
+You are given an HTML file implementing the user interface and part of the JavaScript and WebGL code. Your main task is to implement the following time-stepping function to simulate physics:
 
-In addition, you will need to copy/paste the entire code you developed for Project "project4_Shading" to handle the display and shading functionalities. Here is a demo showing what the finished project should look like:
+```javascript
+function SimTimeStep(
+  dt, positions, velocities, springs,
+  stiffness, damping, particleMass, gravity, restitution
+)
+```
 
-https://www.youtube.com/watch?time_continue=187&v=Kpep7eWHQBM&embeds_referring_euri=https%3A%2F%2Fgraphics.cs.utah.edu%2F&source_ve_path=MzY4NDIsMzY4NDIsMzY4NDIsMjg2NjY&feature=emb_logo
+Additionally, you will need to copy/paste your implementation of the previous shading project (`project4_Shading`) to handle rendering and shading.
 
-The SimTimeStep function takes the time step size (dt) and three arrays, mass particle positions, particle velocities, and springs, along with other simulation parameters. Its job is updating the positions and velocities arrays that initially contain the values at the beginning of the time step and set them to the values at the end of the time step. You are free to use any numerical integration technique you like (explicit Euler, semi-implicit Euler, etc.).
 
-The arrays of positions and velocities contain one 3D vector object of JavaScript class Vec3 per mass particle. This class is provided to make the implementation of vector algebra easier. The implementation of the Vec3 class is included in the given project7.html file (at lines 538 to 569). You can access the x, y, z coordinates of a given Vec3 object (e.g. positions[0].x). It includes the following methods you can use:
+---
 
-init(x,y,z): sets the x, y, and z coordinates to the given values.
-copy(): returns a copy of the vector object.
-set(v): sets the x, y, and z coordinates to the same values as the given vector v.
-inc(v): increments the x, y, and z coordinate values by adding the coordinate values of the given vector v.
-dec(v): decrements the x, y, and z coordinate values by subtracting the coordinate values of the given vector v.
-scale(f): multiplies the x, y, and z coordinates by the given scalar f.
-add(v): add the given vector v to this vector and returns the resulting vector.
-sub(v): subtracts the given vector v from this vector and returns the resulting vector.
-dot(v): computes the dot product of this vector and the given vector v and returns the resulting scalar.
-cross(v): computes the cross product of this vector and the given vector v and returns the resulting vector.
-mul(f): multiplies the vector by the given scalar f and returns the result.
-div(f): divides the vector by the given scalar f and returns the result.
-len2(): returns the squared length of the vector.
-len(): returns the length of the vector.
-unit(): returns the unit vector along the direction of this vector.
-normalize(): normalizes this vector, turning it into a unit vector.
-The array of springs has an object per spring that contains the indices of the two particles it connects (p0 and p1) and the its rest length (rest).
+### 📌 Simulation Details:
 
-The other parameters of the SimTimeStep function are the spring stiffness coefficient, the damping coefficient, the mass of each particle (particleMass, the same scalar mass value is used for each particle), the gravitational acceleration vector (gravity), and the restitution coefficient for collisions with the box walls.
+- `positions` and `velocities` are arrays of particles (`Vec3` objects).
+- `springs` array contains spring objects with particle indices (`p0`, `p1`) and rest length (`rest`).
+- **Box Collision**: Simulation space is a cube centered at the origin, extending from `-1` to `1` in all axes.
+- **Parameters**:
+  - `stiffness`: Spring stiffness coefficient.
+  - `damping`: Damping coefficient.
+  - `particleMass`: Mass of each particle (same for all particles).
+  - `gravity`: Gravity vector (`Vec3`).
+- Handle collisions with box walls using `restitution`. *(Self-collisions are not required.)*
+- You can choose any numerical integration method (Euler explicit, semi-implicit, etc.).
 
-The collision box is a cube centered at the origin with an edge length of 2 units. Thus, it extends from -1 to 1 in all three dimensions. The simulated object must remain inside this box and collide against its walls. Computing the self-collisions of the simulated object is not required.
+---
 
-You are given the following files to help you with this project:
+### 📂 Files Provided:
 
-project7.html: This file contains the implementation of the interface and various JavaScript/WebGL functionalities.
-project7.js: This file contains the placeholder of the JavaScript function GetModelViewMatrix, class MeshDrawer, and function SimTimeStep that you will complete. This file is included by project7.html.
-obj.js: This file implements the OBJ parser and it is included by project7.html. This file is an updated version of the same file included with the previous projects. It includes additional functionalities needed for this project.
-teapot-low.obj: A low-resolution Utah Teapot model, suitable for real-time mass-spring simulation.
-You can use the same OBJ files and textures from the previous project for testing your implementation.
+- **`project7.html`**: Implementation of the interface and various JavaScript/WebGL functionalities.
+- **`project7.js`**: Placeholder for JavaScript function `GetModelViewMatrix`, class `MeshDrawer`, and the `SimTimeStep` function that you will complete.
+- **`obj.js`**: Updated OBJ parser (includes additional functionalities for this project).
+- **`teapot-low.obj`**: A low-resolution Utah Teapot model, suitable for real-time mass-spring simulation.
+
+You can reuse OBJ files and textures from previous projects for testing.
+
+---
+
+### 📌 Class `Vec3` Provided:
+
+`Vec3` class simplifies vector math. Available methods:
+
+- `.init(x,y,z)`
+- `.copy()`
+- `.set(v)`
+- `.inc(v)`, `.dec(v)`
+- `.scale(f)`
+- `.add(v)`, `.sub(v)`
+- `.dot(v)`
+- `.cross(v)`
+- `.mul(f)`
+- `.div(f)`
+- `.len2()`, `.len()`
+- `.unit()`, `.normalize()`
+
+---
+
+### 💡 Useful Tips:
+
+- Press **F4** to quickly reload your JavaScript file without reloading the page.
+- Use **Visual Studio Code** for effective debugging.
+
+📹 [Project Demo Video](https://www.youtube.com/watch?time_continue=187&v=Kpep7eWHQBM)
