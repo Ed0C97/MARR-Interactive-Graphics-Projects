@@ -8,15 +8,15 @@ This guide covers multiple projects, each designed to explore fundamental and ad
 
 ## 📚 Table of Contents
 
-- 🖼️ [Project 1: Alpha Compositing](#-project-1-alpha-compositing)
-- 🚁 [Project 2: UAV Transformations](#project-2-uav-transformations)
-- 📐 [Project 3: Triangular Meshes](#project-3-triangular-meshes)
-- 🎨 [Project 4: Shading](#project-4-shading)
-- 🌈 [Project 5: Ray Tracing](#project-5-ray-tracing)
-- 🎳 [Project 6: Mass-Spring Simulation](#project-6-mass-spring-simulation)
-- 🚦 [Getting Started](#getting-started)
-- 📌 [Credits](#credits)
-- 📝 [License](#license)
+- [🖼️ Project 1: Alpha Compositing](#-project-1-alpha-compositing)
+- [🚁 Project 2: UAV Transformations](#project-2-uav-transformations)
+- [📐 Project 3: Triangular Meshes](#project-3-triangular-meshes)
+- [🎨 Project 4: Shading](#project-4-shading)
+- [🌈 Project 5: Ray Tracing](#project-5-ray-tracing)
+- [🎳 Project 6: Mass-Spring Simulation](#project-6-mass-spring-simulation)
+- [🚦 Getting Started](#getting-started)
+- [📌 Credits](#credits)
+- [📝 License](#license)
 
 ---
 
